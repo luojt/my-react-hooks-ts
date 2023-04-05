@@ -16,7 +16,7 @@ const Header: FC = () => {
   const onBack=()=>{
     dispatch(dispatchLogin({isLogin:false,userInfo:null}));
     writeState(null);
-    history.push("/login");
+    history.push("/Login");
   }
   const menu = (
     <Menu>
@@ -25,7 +25,7 @@ const Header: FC = () => {
       </Menu.Item>
     </Menu>
   );
-  
+
   return (
     <div className="header-warp flex">
        <div className="flex-1 in-flex-c">
@@ -33,7 +33,7 @@ const Header: FC = () => {
          <h1 className='h1'>鬼鬼电商管理系统</h1>
        </div>
        <Dropdown overlay={ menu }>
-        <div className='pointer'> 
+        <div className='pointer'>
           <span className='m-r-10'>{ userInfo.userName }</span>
           <Avatar src={ userInfo.pic } size={ 46 } icon={ <UserOutlined /> } />
         </div>
