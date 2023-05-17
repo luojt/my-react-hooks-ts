@@ -25,15 +25,15 @@ const Header: FC = () => {
       </Menu.Item>
     </Menu>
   );
-  
+
   return (
     <div className="header-warp flex">
        <div className="flex-1 in-flex-c">
          <img className='logo' src={logo} alt="logo" />
-         <h1 className='h1'>鬼鬼电商管理系统</h1>
+         <h1 className='h1'>电商管理系统</h1>
        </div>
        <Dropdown overlay={ menu }>
-        <div className='pointer'> 
+        <div className='pointer'>
           <span className='m-r-10'>{ userInfo.userName }</span>
           <Avatar src={ userInfo.pic } size={ 46 } icon={ <UserOutlined /> } />
         </div>

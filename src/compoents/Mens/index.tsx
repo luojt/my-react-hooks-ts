@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react';
+import React, {FC, useEffect, useState} from 'react';
 import { Menu, MenuTheme } from 'antd';
 import './index.less';
 import routes from '@/routes/index';
@@ -20,8 +20,8 @@ const { SubMenu } = Menu;
 
 /**
  * 根据当前页面路由key获取选中项
- * @param pathname 
- * @returns 
+ * @param pathname
+ * @returns
  */
 const getMenuKeys = (pathname: string): menKey => {
   let keys: Array<string> = [];
@@ -47,9 +47,9 @@ const getMenuKeys = (pathname: string): menKey => {
 
 /**
  * 根据权限过滤菜单
- * @param routeList 
- * @param jurList 
- * @returns 
+ * @param routeList
+ * @param jurList
+ * @returns
  */
 const filterMens=(
   routeList:Array<RouterType>,
@@ -69,13 +69,14 @@ const filterMens=(
 const Mens: FC<Props> = (props: Props) => {
   const history = useHistory();
   const keys = getMenuKeys(history.location.pathname);
-  const [selectedKeys, ] = useState<Array<string>>(keys.selectKeys);
-  const [defaultOpenKeys, ] = useState<Array<string>>(keys.keys);
+  const [selectedKeys,setSelectedKeys ] = useState<Array<string>>(keys.selectKeys);
+  const [defaultOpenKeys, setDefaultOpenKeys] = useState<Array<string>>(keys.keys);
   const [theme] = useState<MenuTheme>('light');
   //因为key存储关键词重复的可能，所以转成数组
   const jurList:Array<string>=props.jurisdictions.split(',');
   //根据权限过滤菜单
   const menList:Array<RouterType>=filterMens(routes,jurList);
+
   return (
     <Menu
       className='menu-com'
@@ -88,15 +89,15 @@ const Mens: FC<Props> = (props: Props) => {
       {
        menList.map((route: RouterType) => {
           return (
-            <SubMenu 
-             key={route.key} 
-             title={route.title} 
+            <SubMenu
+             key={route.key}
+             title={route.title}
              icon={<SvgIcon className={'icon-'+route.key} icon={route.key}/>}>
               {
               route.children.map((croute: RouterType) => {
                   return (
-                    <Menu.Item 
-                     key={croute.key} 
+                    <Menu.Item
+                     key={croute.key}
                      icon={<SvgIcon className={'icon-'+croute.key} icon={croute.key}/>}>
                       <Link to={croute.path}>{croute.title}</Link>
                     </Menu.Item>

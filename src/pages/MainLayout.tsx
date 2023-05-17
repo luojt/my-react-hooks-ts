@@ -13,7 +13,7 @@ import { routesEnum } from '@/routes/config';
 /**
 /**
  * 获取所有路由页面
- * @returns 
+ * @returns
  */
  const getRouters=():Array<RouterType>=>{
   let list=[];
@@ -54,8 +54,8 @@ const MainLayout: FC = () => {
           <Breadcrumbs></Breadcrumbs>
           <Route path="/no-match" key="no-match">
             <NoMatch></NoMatch>
-          </Route> 
-          <Redirect path="/" to={redirectRoute} />
+          </Route>
+          {/*<Redirect path="/" to={redirectRoute} />*/}
           {/* 其他路由 */}
           {
             routeList.map(route => {

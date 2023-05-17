@@ -4,7 +4,7 @@ import { StoreState } from '@/store/StoreState';
 import { useSelector } from 'react-redux';
 
 const AppLayout = lazy(() => import('@/pages/AppLayout'));
-const Login = lazy(() => import('@/pages/Login/Login'));
+const Login = lazy(() => import('@/pages/login/Login'));
 const MainLayout = lazy(() => import('@/pages/MainLayout'));
 
 const App: FC = () => {
