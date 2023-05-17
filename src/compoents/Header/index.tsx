@@ -16,7 +16,7 @@ const Header: FC = () => {
   const onBack=()=>{
     dispatch(dispatchLogin({isLogin:false,userInfo:null}));
     writeState(null);
-    history.push("/Login");
+    history.push("/login");
   }
   const menu = (
     <Menu>
