@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import routes from '@/routes/index';
 import NoMatch from '../pages/NoMatch';
-import { Redirect, Route } from 'react-router-dom';
+import {Redirect, Route, useHistory} from 'react-router-dom';
 import { RouterType } from "@/routes/interface";
 import Mens from "@/compoents/Mens";
 import Breadcrumbs from "@/compoents/Breadcrumbs";
@@ -43,6 +43,12 @@ const MainLayout: FC = () => {
    const routeList:Array<RouterType>=filterRoutes(routes,userInfo.jurisdictions);
    //默认路由
    const redirectRoute = routesEnum.defaultPath;
+   const history = useHistory()
+
+
+   if (history.location.pathname=="/"){
+     return <Redirect path="/" to={redirectRoute} />;
+   }
    return (
     <section>
       <Header></Header>
